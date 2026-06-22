@@ -272,7 +272,7 @@ function renderOverview(){
         <div class="meta-sub"><span class="badge" style="background:${cc[0]};color:${cc[1]}">${s.course_id||''}</span> ${s.week_num||''}</div>
       </div>
       <div class="pb-wrap"><div class="pb"><div class="pb-fill" style="width:${pct}%"></div></div><div class="pb-lbl">${s.week_num||'W0'}/W10</div></div>
-      <span class="badge" style="background:${s.milestone_status==='提案核准'?'var(--green-bg)':'var(--blue-bg)';color:${s.milestone_status==='提案核准'?'var(--green)':'var(--blue)'}">${s.milestone_status||'進行中'}</span>
+      <span class="badge" style="background:${s.milestone_status==='提案核准'?'var(--green-bg)':'var(--blue-bg)'};color:${s.milestone_status==='提案核准'?'var(--green)':'var(--blue)'}">${s.milestone_status||'進行中'}</span>
       <button class="btn-outline" style="padding:4px 10px;font-size:11px" onclick="quickFill('${s.student_name}','${s.course_id}','${s.week_num||'W0'}')">填紀錄</button>
     </div>`;
   }).join('');
@@ -288,7 +288,7 @@ function renderHomework(){
     const scoreBg=h.hw_score&&h.hw_score.includes('A')?'var(--green-bg)':h.hw_score&&h.hw_score.includes('B')?'var(--blue-bg)':'var(--amber-bg)';
     const scoreColor=h.hw_score&&h.hw_score.includes('A')?'var(--green)':h.hw_score&&h.hw_score.includes('B')?'var(--blue)':'var(--amber)';
     return `<div class="hw-item">
-      <div class="hw-name${isDone?' style=text-decoration:line-through;color:var(--text-hint)':''}">${h.student_name} — ${h.week_num}</div>
+      <div class="hw-name" ${isDone?'style="text-decoration:line-through;color:var(--text-hint)"':''}>${h.student_name} — ${h.week_num}</div>
       <div style="flex:1"><div class="hw-detail">${h.homework_assigned||'—'} · ${h.hw_submit_date?'繳交 '+h.hw_submit_date:''} ${h.hw_review_deadline?'· 截止 '+h.hw_review_deadline:''}</div></div>
       <span class="score" style="background:${scoreBg};color:${scoreColor}">${h.hw_status||'待批改'}</span>
     </div>`;
